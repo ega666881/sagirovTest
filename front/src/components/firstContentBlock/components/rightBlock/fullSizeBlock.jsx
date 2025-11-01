@@ -1,16 +1,17 @@
 import { observer } from "mobx-react";
-import { Box, Grid } from "@mui/material";
+import { Box, Grid, Typography } from "@mui/material";
 
-import MiniBlock from "../../../sharedComponents/miniBlock";
+
 import { assets } from "../../../../utils/mediaManager";
-import FullSizeBlock from "./fullSizeBlock";
+
 import { firstContentBlockAssets } from "../../assets";
-import Typography from '../../../../utils/editableTypography';
+
 import clientStore from "../../../../stores/clientStore";
 import rightBlockStore from "../../../../stores/contentBlocks/rightBlockStore";
+import contentStore from "../../../../stores/contentBlocks/contentStore";
 
 
-function RightFullSizeBlock() {
+function RightFullSizeBlock() { 
     return (
         <Box
             sx={{
@@ -43,11 +44,9 @@ function RightFullSizeBlock() {
                     }}
                 >
                     <Typography
-                        sx={{
 
-                        }}
-                    >
-                        Выгодные предложения
+                    > 
+                        {contentStore.texts.find(text => text.name == 'rightBlockTitle')?.title}
                     </Typography>
                 </Box>
                 <img src={assets.titleLogoIcon} />

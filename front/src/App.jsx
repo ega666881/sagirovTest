@@ -7,6 +7,7 @@ import GilroyMediumFont from './assets/fonts/gilroy-medium.ttf'
 import clientStore from './stores/clientStore';
 import FirstBlock from './components/firstContentBlock/firstBlock';
 import SecondContentBlock from './components/secondContentBlock/secondContentBlock';
+import RoutesComponent from './routes/routes';
 
 
 const theme = createTheme({
@@ -50,21 +51,7 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Box
-        sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          maxWidth: '100%',
-          overflowX: 'hidden',
-          padding: 2,
-          overflowY: clientStore.isMobile ? 'auto':'hidden',
-        }}
-      >
-        <Header />
-        <FirstBlock />
-        <SecondContentBlock />
-      </Box>
+      <RoutesComponent />
     </ThemeProvider>
   )
 }

@@ -1,9 +1,8 @@
 import { observer } from "mobx-react";
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { assets } from "../../utils/mediaManager";
 import clientStore from "../../stores/clientStore";
 import { firstContentBlockAssets } from "../firstContentBlock/assets";
-import Typography from '../../utils/editableTypography';
 
 function MiniBlock({
     backgroundImageUrl,
@@ -111,8 +110,8 @@ function MiniBlock({
         <Box
             sx={{
                 position: 'absolute',
-                bottom: 8,
-                right: 8,
+                bottom: 0,
+                right: 0,
                 backgroundColor: '#17BE79',
                 borderRadius: 5,
                 padding: 2,
@@ -139,9 +138,7 @@ function MiniBlock({
         >
         <Typography
             sx={{
-                
                 width: "100%",
-                
             }}
         >
             {bottomText}

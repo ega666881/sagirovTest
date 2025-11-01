@@ -1,7 +1,6 @@
 import { observer } from "mobx-react";
-import { Box, Button } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 import { useState } from "react";
-import Typography from '../../utils/editableTypography';
 import navBarStore from "../../stores/navBarStore";
 import clientStore from "../../stores/clientStore";
 

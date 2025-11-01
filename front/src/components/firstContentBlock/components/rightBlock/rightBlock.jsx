@@ -6,7 +6,7 @@ import { assets } from "../../../../utils/mediaManager";
 import RightFullSizeBlock from "./fullSizeBlock";
 import { firstContentBlockAssets } from "../../assets";
 import clientStore from "../../../../stores/clientStore";
-
+import contentStore from "../../../../stores/contentBlocks/contentStore";
 
 function RightBlock() {
   return (
@@ -39,14 +39,14 @@ function RightBlock() {
                 }}
             >
                 <MiniBlock 
-                    titleText={'Актуальные статьи'} 
+                    titleText={contentStore.texts.find(text => text.name == 'category8')?.title} 
                     titleTextBackgroundColor={'#E9EDF3'}
                     titleTextWrap={'wrap'}
                     titleLogoUrl={firstContentBlockAssets.newsLogoIcon}
                     backgroundImageUrl={firstContentBlockAssets.newsBackgroundImage}
                 />
                 <MiniBlock 
-                    titleText={'Хранение паролей и seed-фраз'}
+                    titleText={contentStore.texts.find(text => text.name == 'category2')?.title}
                     titeTextColor={'white'}
                     backgroundImageUrl={firstContentBlockAssets.titanStorageBackgroundImage}
                 />
@@ -54,7 +54,7 @@ function RightBlock() {
             </Box>
         </Box>
     </Slide>
-  )
+  ) 
 }
 
 export default observer(RightBlock)

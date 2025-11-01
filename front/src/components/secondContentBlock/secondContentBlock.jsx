@@ -7,13 +7,13 @@ import { secondBlockAssets } from "./assets";
 import PopularsCategory from "./popularsCategory";
 import useOnScreen from "./useOnScreen";
 import { useRef } from "react";
-
+import contentStore from "../../stores/contentBlocks/contentStore";
 
 function SecondBlock() {
     const ref = useRef(null)
     const isVisible = useOnScreen(ref, { threshold: 0.1 })
 
-    return (
+    return ( //contentStore.texts.find(text => text.name == 'product1')?.title
             <Box
                 
                 sx={{
@@ -43,7 +43,7 @@ function SecondBlock() {
                         },
                     }}
                 >
-                    Товары, которые покупают чаще всего
+                    {contentStore.texts.find(text => text.name == 'bestsellersTitle')?.title}
                 </Typography>
                 <Box
                     ref={ref}
@@ -51,8 +51,6 @@ function SecondBlock() {
                         display: 'flex',
                         flexDirection: clientStore.isMobile ? 'column':'row',
                         maxWidth: '100%',
-                        
-                        
                         gap: 1,
                     }}
                 >
@@ -71,13 +69,13 @@ function SecondBlock() {
                             }}
                         >
                             <MiniBlock 
-                                titleText={"Аппаратные кошельки"}
+                                titleText={contentStore.texts.find(text => text.name == 'category4')?.title}
                                 titleLeftLogoUrl={secondBlockAssets.lockIcon}
                                 backgroundImageUrl={secondBlockAssets.nativeWalletsImage}
                                 linkIcon={true}
                             />
                             <MiniBlock 
-                                titleText={"U2F-токены"}
+                                titleText={contentStore.texts.find(text => text.name == 'category5')?.title} 
                                 titleLeftLogoUrl={secondBlockAssets.lockIcon}
                                 backgroundImageUrl={secondBlockAssets.u2ftokensImage}
                                 linkIcon={true}
@@ -88,7 +86,7 @@ function SecondBlock() {
                         sx={{
                             display: 'flex',
                             flexDirection: 'column',
-                            gap: 1,
+                            gap: 3,
                         }}
                     >
                         <Grow
@@ -99,18 +97,22 @@ function SecondBlock() {
                         >
                             <Box>
                                 <MiniBlock 
-                                    titleText={"Устройства для записи seed"}
-                                    bottomText={"Надежные устройства для хранения мнемонической фразы, необходимой для восстановления доступа к вашим средствам"}
+                                    titleText={contentStore.texts.find(text => text.name == 'product2')?.title}
+                                    bottomText={contentStore.texts.find(text => text.name == 'seedPhraseDescription')?.title}
                                     titleLeftLogoUrl={secondBlockAssets.lockIcon}
-                                    backgroundImageUrl={secondBlockAssets.defaultBackgroundImage}
+                                    backgroundImageUrl={
+                                        clientStore.isMobile ? (secondBlockAssets.defaultMobileBackgroundImage):(secondBlockAssets.defaultBackgroundImage)
+                                    }
                                     linkIcon={true}
                                 />
                                 <PopularsCategory />
                                 <MiniBlock
                                     titleLeftLogoUrl={secondBlockAssets.lockIcon}
-                                    titleText={"Кабели и переходники"}
-                                    bottomText={"Большой выбор кабелей и переходников для удобного использования ваших устройств"}
-                                    backgroundImageUrl={secondBlockAssets.defaultBackgroundImage}
+                                    titleText={contentStore.texts.find(text => text.name == 'category1')?.title} 
+                                    bottomText={contentStore.texts.find(text => text.name == 'cablesDescription')?.title}
+                                    backgroundImageUrl={
+                                        clientStore.isMobile ? (secondBlockAssets.defaultMobileBackgroundImage):(secondBlockAssets.defaultBackgroundImage)
+                                    }
                                     linkIcon={true}
                                 />
                             </Box>
@@ -132,13 +134,13 @@ function SecondBlock() {
                         >
                             <MiniBlock
                                 titleLeftLogoUrl={secondBlockAssets.lockIcon}
-                                titleText={"Аксессуары"}
+                                titleText={contentStore.texts.find(text => text.name == 'navAccessories')?.title}
                                 backgroundImageUrl={secondBlockAssets.accessoriesImage}
                                 linkIcon={true}
                             />
                             <MiniBlock 
                                 titleLeftLogoUrl={secondBlockAssets.lockIcon}
-                                titleText={"Чехлы и кейсы"}
+                                titleText={contentStore.texts.find(text => text.name == 'category6')?.title}
                                 backgroundImageUrl={secondBlockAssets.casesImage}
                                 linkIcon={true}
                             />

@@ -6,6 +6,7 @@ import { assets } from "../../../../utils/mediaManager";
 import FullSizeBlock from "./fullSizeBlock";
 import { firstContentBlockAssets } from "../../assets";
 import clientStore from "../../../../stores/clientStore";
+import contentStore from "../../../../stores/contentBlocks/contentStore";
 
 function LeftBlock() {
   return (
@@ -37,13 +38,13 @@ function LeftBlock() {
                 }}
             >
                 <MiniBlock 
-                    titleText={'Защита учётных записей'}
+                    titleText={contentStore.texts.find(text => text.name == 'category3')?.title}
                     titeTextColor={'white'}
                     backgroundImageUrl={assets.usbBackgroundImage}
                     linkIcon={true}
                 />
                 <MiniBlock 
-                    titleText={'Социальные сети'}
+                    titleText={contentStore.texts.find(text => text.name == 'category7')?.title}
                     titleTextWrap={'wrap'}
                     titleTextBackgroundColor={'white'}
                     titeTextColor={'black'}

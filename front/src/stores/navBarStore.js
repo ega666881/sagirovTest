@@ -1,39 +1,9 @@
 import { action, makeAutoObservable } from 'mobx';
+import { getNavButtonsReq } from '../utils/requests/admin';
 
 
 class NavBarStore {
-    buttons = [
-        {
-            id: 1,
-            title: 'Главная',
-            url: '/'
-        },
-        {
-            id: 2,
-            title: 'Каталог',
-            url: '/'
-        },
-        {
-            id: 3,
-            title: 'Бренды',
-            url: '/'
-        },
-        {
-            id: 4,
-            title: 'Доставка и оплата',
-            url: '/'
-        },
-        {
-            id: 5,
-            title: 'Помощь',
-            url: '/'
-        },
-        {
-            id: 6,
-            title: 'Компания',
-            url: '/'
-        },
-    ]
+    buttons = []
 
     activeButtonId = 0
 
@@ -43,6 +13,21 @@ class NavBarStore {
         }   
         makeAutoObservable(this);
     }
+
+    getNavButtons = action(async () => {
+        const response = await getNavButtonsReq()
+        switch(response.status) {
+            case 200: {
+                const data = await response.data
+                this.buttons = data
+            } 
+        }
+        
+    })
+
+    addNavButton = action((data) => {
+        this.buttons.unshift({...data})
+    })
 
     getStylesButton(buttonId) {
         if (buttonId === this.activeButtonId) {

@@ -4,33 +4,37 @@ import { assets } from "../../utils/mediaManager";
 import NavBar from "./navBar";
 import EndIcons from "./endIcons";
 import clientStore from "../../stores/clientStore";
+import { useEffect } from "react";
+
 
 function Header() {
-  return (
-    <Slide
-        direction="down"
-        in={true}
-        timeout={{
-            enter: 900,
-        }}
-    >
-        <Box
-            sx={{
-                display: 'flex',
-                justifyContent: 'space-between',
-                flexDirection: clientStore.isMobile ? 'column':'row',
-                alignItems: 'center',
-                gap: 1
+
+    
+    return (
+        <Slide
+            direction="down"
+            in={true}
+            timeout={{
+                enter: 900,
             }}
         >
-            <Box>
-                <img src={assets.logoIcon} width={"100%"}/>
+            <Box
+                sx={{
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    flexDirection: clientStore.isMobile ? 'column':'row',
+                    alignItems: 'center',
+                    gap: 1
+                }}
+            >
+                <Box>
+                    <img src={assets.logoIcon} width={"100%"}/>
+                </Box>
+                <NavBar />
+                <EndIcons />
             </Box>
-            <NavBar />
-            <EndIcons />
-        </Box>
-    </Slide>
-  )
+        </Slide>
+    )
 }
 
 export default observer(Header)

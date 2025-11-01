@@ -1,11 +1,11 @@
 import { observer } from "mobx-react";
-import { Box, Button, Avatar, AvatarGroup } from "@mui/material";
+import { Box, Button, Avatar, AvatarGroup, Typography } from "@mui/material";
 
-import Typography from '../../../../utils/editableTypography';
+
 import { assets } from "../../../../utils/mediaManager";
 import { firstContentBlockAssets } from './../../assets';
 import clientStore from "../../../../stores/clientStore";
-
+import contentStore from "../../../../stores/contentBlocks/contentStore";
 
 
 function FullSizeBlock() {
@@ -38,7 +38,7 @@ function FullSizeBlock() {
                     gap: 1,
                 }}
             >
-                Интернет-магазин оборудования 
+                {contentStore.texts.find(text => text.name == 'mainHeading')?.title}
             </Typography>
             <Typography
                 sx={{
@@ -57,7 +57,7 @@ function FullSizeBlock() {
                     alignItems: 'center',
                 }}
             >
-                для защиты криптоактивов
+                {contentStore.texts.find(text => text.name == 'mainHeading2')?.title}
                 <Button
                     sx={{
                         display: 'flex',
@@ -79,7 +79,7 @@ function FullSizeBlock() {
                             color: 'white'
                         }}
                     >
-                        В каталог
+                        {contentStore.texts.find(text => text.name == 'catalogButton')?.title}
                     </Typography>
                 </Button>
             </Typography>
@@ -100,7 +100,7 @@ function FullSizeBlock() {
                     },
                 }}
             >
-                Сryptoro - официальный реселлер, самый большой выбор в России
+                {contentStore.texts.find(text => text.name == 'subtitle')?.title}
             </Typography>
         </Box>
 
@@ -121,12 +121,12 @@ function FullSizeBlock() {
             >
                 {[
                     {
-                        firstText: '10+',
-                        secondText: 'лет на рынке',
+                        firstText: contentStore.texts.find(text => text.name == '10+')?.title,
+                        secondText: contentStore.texts.find(text => text.name == 'marketExperience')?.title,
                     },
                     {
-                        firstText: '50+',
-                        secondText: 'брендов',
+                        firstText: contentStore.texts.find(text => text.name == '50+')?.title,
+                        secondText: contentStore.texts.find(text => text.name == 'brandsCount')?.title,
                     }
                 ].map(block => (
                     <Box>
