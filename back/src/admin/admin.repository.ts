@@ -14,7 +14,6 @@ export class AdminRepository {
     }
 
     async updateText(id: number, newText: string) {
-        console.log(id, newText)
         const [updatedRow] = await this.knex<IText>(tableNames.texts)
                             .update({
                                 title: newText

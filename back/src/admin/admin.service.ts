@@ -34,7 +34,6 @@ export class AdminService {
 
     async createNavButton(dto: CreateNavButtonDto) {
         let index = dto.index
-        console.log(index)
         if (!index) {
             const maxIndex = await this.adminRepository.getNavMaxIndex()
             if (!maxIndex) {
