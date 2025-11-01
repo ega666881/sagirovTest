@@ -22,7 +22,7 @@ function NavBar() {
                 borderRadius: 10,
                 padding: 2,
                 width: clientStore.isMobile ? "100%":"50%",
-                maxWidth: "50%",
+                maxWidth: clientStore.isMobile ? "100%":"50%",
                 overflowX: 'auto',
                 gap: 1
             }}
