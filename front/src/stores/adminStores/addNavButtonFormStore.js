@@ -16,7 +16,7 @@ class AddNavButtonStore {
     })
 
     createNavButton = action(async () => {
-        const response = await createNavButtonReq(this.newButton.title, Number(this.newButton.index))
+        const response = await createNavButtonReq(this.formData.title, Number(this.formData.index))
         switch(response.status) {
             case 201: {
                 navBarStore.getNavButtons()
